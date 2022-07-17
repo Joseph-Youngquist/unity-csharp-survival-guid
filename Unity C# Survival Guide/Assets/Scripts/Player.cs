@@ -4,64 +4,48 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float[] _quizScores = new float[5];
+    // Create a program that when you hit the space key, you  increment a score value. When that score value is greater
+    // than 50, you turn the cube green. At the start of the program, set the cube to red.
 
     [SerializeField]
-    private float totalScores;
+    private GameObject _cube;
 
     [SerializeField]
-    private float _classAverageScore;
-    
-    // 5 quiz grades
-    // calculate the average quiz grades
-    // that prints out the grade average based on this scenario
+    private int _score;
 
-    // Print A -> >= 90
-    // Print B -> >= 80 but less than 90
-    // Print C -> >=70 but less than 80
-    // Print F -> less than 70
+    private Renderer _cubeRenderer;
+    private bool _colorHasChanged = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Randomize, cause it's more fun!
-        for(int i = 0; i < _quizScores.Length; i++)
+        if (_cube == null)
         {
-            float score = Random.Range(0f, 100f);
-            _quizScores[i] = score;
-            totalScores += score;
+            Debug.LogError("Player::Start() - cube is null");
         }
 
-        _classAverageScore = totalScores / _quizScores.Length;
+        _cubeRenderer = _cube.GetComponent<Renderer>();
 
-        char classAverageLetterGrade;
+        if (_cubeRenderer == null)
+        {
+            Debug.LogError("Player::Start - cube renderer is null");
+        }
 
-        // We can get away with logic where we're just testing the minimum rather than a range
-        // if we order our conditions in decrementing order.
-        // if we didn't then we'd have to make the conditional logic more complex
-
-        if (_classAverageScore >= 90)
-        {
-            classAverageLetterGrade = 'A';
-        }
-        else if (_classAverageScore >= 80)
-        {
-            classAverageLetterGrade = 'B';
-        }
-        else if (_classAverageScore >= 70)
-        {
-            classAverageLetterGrade = 'C';
-        } else
-        {
-            classAverageLetterGrade = 'F';
-        }
-        Debug.Log("The class average letter grade is: " + classAverageLetterGrade);
+        _cubeRenderer.material.color = Color.red;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _score += 10;
+        }
+
+        if (_score > 50 && _colorHasChanged == false)
+        {
+            _cubeRenderer.material.color = Color.green;
+            _colorHasChanged = true;
+        }
     }
 }
