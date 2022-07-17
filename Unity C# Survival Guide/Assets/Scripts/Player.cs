@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 
         // if points greater than or equal to 50
         // then print "you are awesome!"
-
+        if(_score >= 50)
+        {
+            Debug.Log("You are awesome!");
+        }
     }
 }
