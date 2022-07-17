@@ -36,8 +36,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Slow Down!");
         }
-
-        if (_speed == 0)
+        else if (_speed == 0)
         {
             Debug.Log("You need to speed up!");
         }
