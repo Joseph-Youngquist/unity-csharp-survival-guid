@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int easyDifficulty = 0;
-    public int mediumDifficulty = 1;
-    public int hardDifficulty = 2;
-    public int currentDifficulty;
+    // 5 quiz grades
+    // calculate the average quiz grades
+    // that prints out the grade average based on this scenario
+
+    // Print A -> >= 90
+    // Print B -> >= 80 but less than 90
+    // Print C -> >=70 but less than 80
+    // Print F -> less than 70
 
     // Start is called before the first frame update
     void Start()
     {
-        currentDifficulty = mediumDifficulty;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentDifficulty == easyDifficulty)
-        {
-            Debug.Log("You selected easy");
-        }
-        else if (currentDifficulty == mediumDifficulty)
-        {
-            Debug.Log("You selected medium");
-        }
-        else if (currentDifficulty == hardDifficulty)
-        {
-            Debug.Log("You selected hard");
-        }
-        else
-        {
-            Debug.Log("Invalid difficulty selected");
-        }
+        
     }
 }
