@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Variable to hold points
+    [SerializeField]
+    private int _score;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +19,9 @@ public class Player : MonoBehaviour
         // if we hit the space key
         // add 10 points.
 
-        if()
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            // add 10 points
+            _score += 10;
         }
     }
 }
