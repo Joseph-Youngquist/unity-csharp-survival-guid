@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private int _score;
 
     // make a variable on whether or not the message has been said.
-
+    private bool _hasSaidMessage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +28,10 @@ public class Player : MonoBehaviour
 
         // if points greater than or equal to 50 && (and) our said message variable is false
         // then print "you are awesome!" and stop the message from being said again.
-        if(_score >= 50)
+        if(_score >= 50 && !_hasSaidMessage)
         {
             Debug.Log("You are awesome!");
+            _hasSaidMessage = true;
         }
     }
 }
