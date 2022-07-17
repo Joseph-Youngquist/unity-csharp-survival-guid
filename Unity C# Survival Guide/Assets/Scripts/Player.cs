@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         // based on the value of points, we print out.
 
         // Challenge, convert the below into a switch statement.
+        /*
         if(points == 50)
         {
             Debug.Log("Points are 50!");
@@ -42,6 +43,20 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("You need 50 or 100 points to receive a message");
+        }
+        */
+        switch(points)
+        {
+            case 50:
+                Debug.Log("Points are 50!");
+                break;
+            case 100:
+                Debug.Log("Points are 100!");
+                break;
+            default:
+                Debug.Log("You need 50 or 100 points to receive a message");
+                break;
+
         }
     }
 }
