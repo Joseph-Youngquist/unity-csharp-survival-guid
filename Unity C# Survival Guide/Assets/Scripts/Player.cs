@@ -4,34 +4,35 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private int _score;
+    public int easyDifficulty = 0;
+    public int mediumDifficulty = 1;
+    public int hardDifficulty = 2;
+    public int currentDifficulty;
 
-    // make a variable on whether or not the message has been said.
-    private bool _hasSaidMessage = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        currentDifficulty = mediumDifficulty;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if we hit the space key
-        // add 10 points.
-
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (currentDifficulty == easyDifficulty)
         {
-            _score += 10;
+            Debug.Log("You selected easy");
         }
-
-        // if points greater than or equal to 50 && (and) our said message variable is false
-        // then print "you are awesome!" and stop the message from being said again.
-        if(_score >= 50 && !_hasSaidMessage)
+        else if (currentDifficulty == mediumDifficulty)
         {
-            Debug.Log("You are awesome!");
-            _hasSaidMessage = true;
+            Debug.Log("You selected medium");
+        }
+        else if (currentDifficulty == hardDifficulty)
+        {
+            Debug.Log("You selected hard");
+        }
+        else
+        {
+            Debug.Log("Invalid difficulty selected");
         }
     }
 }
