@@ -23,5 +23,9 @@ public class Player : MonoBehaviour
         {
             _score += 10;
         }
+
+        // if points greater than or equal to 50
+        // then print "you are awesome!"
+
     }
 }
