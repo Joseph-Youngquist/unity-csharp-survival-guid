@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
                 _colorToUse = Color.black;
                 break;
             default:
-                _colorToUse = Color.clear;
+                _colorToUse = Color.white;
                 break;
         }
 
