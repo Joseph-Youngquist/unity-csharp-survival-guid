@@ -4,76 +4,52 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Create a program that turns a cube into different colors based on user input
-    // 1 key = blue
-    // 2 key = red
-    // 3 key = green
-    // 4 key = black
+    public int WeaponID;
 
-    [SerializeField]
-    private GameObject _cube;
-
-    private Renderer _cubeRender;
-
-    private Color _colorToUse;
-    private char _keyPressed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (_cube == null)
-        {
-            Debug.LogError("Player::Start() - Cube is null");
-        }
-
-        _cubeRender = _cube.GetComponent<Renderer>();
-
-        if (_cubeRender == null)
-        {
-            Debug.LogError("Player::Start() - Cube Renderer is null");
-        }
-    }
-
+    // id 1 = gun
+    // id 2 = knife
+    // id 3 = Machine Gun
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _keyPressed = '1';
+            WeaponID = 1;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            _keyPressed = '2';
+            WeaponID = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            _keyPressed = '3';
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            _keyPressed = '4';
+            WeaponID = 3;
         }
 
-        switch(_keyPressed)
+        MessageSelectedWeapon();
+        
+    }
+
+    void MessageSelectedWeapon()
+    {
+        string _message;
+
+        switch (WeaponID)
         {
-            case '1':
-                _colorToUse = Color.blue;
+            case 1:
+                _message = "You have selected the Gun!";
                 break;
-            case '2':
-                _colorToUse = Color.red;
+            case 2:
+                _message = "You have selected the Knife!";
                 break;
-            case '3':
-                _colorToUse = Color.green;
-                break;
-            case '4':
-                _colorToUse = Color.black;
+            case 3:
+                _message = "You have selected the Machine Gun!";
                 break;
             default:
-                _colorToUse = Color.white;
+                _message = "You have no weapons selected!";
                 break;
         }
 
-        _cubeRender.material.color = _colorToUse;
+        Debug.Log(_message);
     }
 }
